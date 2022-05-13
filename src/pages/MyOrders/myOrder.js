@@ -1,6 +1,10 @@
+import SideNavMenu from "../../component/navigationBar/sideNavigation/SideNavMenu";
+
 function MyOrder(){
     return(
-        <div>Hi!</div>
+        <div>
+            <SideNavMenu/>
+        </div>
     );
 }
 

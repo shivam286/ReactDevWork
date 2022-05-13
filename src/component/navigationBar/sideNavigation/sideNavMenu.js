@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { Layout,Menu } from "antd";
 import {
@@ -7,14 +8,22 @@ import {
     VideoCameraOutlined,
     UploadOutlined,
   } from '@ant-design/icons';
+import "./SideNavMenu.css"
+import HamBurgerMenu from "../../HamBurgerMenu";
 
   const {Header,Sider, Content} = Layout
 
-  function sideNavMenu() {
+  function SideNavMenu() {
     const [collapseNav, isCollapsed] = useState(false)
+    const [containerToggle, isContainerToggled] = useState(false);
 
     function toggleSideMenu(){
-      isCollapsed(true)
+      if (collapseNav === false){
+        isCollapsed(true)
+      }
+      else {
+        isCollapsed(false)
+      }
     }
       return (
         <Layout>
@@ -44,12 +53,15 @@ import {
             />
           </Sider>
           <Layout className="site-layout">
+            <HamBurgerMenu toggle={toggleSideMenu}>
             <Header className="site-layout-background" style={{ padding: 0 }}>
               {React.createElement(isCollapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                 className: 'trigger',
                 onClick: toggleSideMenu,
               })}
             </Header>
+            </HamBurgerMenu>
+            
             <Content
               className="site-layout-background"
               style={{
@@ -67,4 +79,4 @@ import {
 
 
 
-  export default sideNavMenu;
+  export default SideNavMenu;
